@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortalAdopcjiZwierzat.Data;
 
@@ -10,9 +11,10 @@ using PortalAdopcjiZwierzat.Data;
 namespace PortalAdopcjiZwierzat.Migrations
 {
     [DbContext(typeof(PortalAdopcjiZwierzatContext))]
-    partial class PortalAdopcjiZwierzatContextModelSnapshot : ModelSnapshot
+    [Migration("20231122232330_dodanie pola Imie")]
+    partial class dodaniepolaImie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,10 +43,6 @@ namespace PortalAdopcjiZwierzat.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Opis")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Plec")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

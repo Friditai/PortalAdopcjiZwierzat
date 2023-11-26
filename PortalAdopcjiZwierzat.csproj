@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\css\Nowy folder\**" />
+    <Content Remove="wwwroot\css\Nowy folder\**" />
+    <EmbeddedResource Remove="wwwroot\css\Nowy folder\**" />
+    <None Remove="wwwroot\css\Nowy folder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.23">
       <PrivateAssets>all</PrivateAssets>

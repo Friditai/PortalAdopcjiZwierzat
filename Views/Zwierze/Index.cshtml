@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create">Dodaj zwierzę</a>
 </p>
+<form asp-controller="Zwierze" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" placeholder="Szukana fraza" />
+        <input type="submit" value="Szukaj" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -16,7 +22,13 @@
                 @Html.DisplayNameFor(model => model.Adoptowany)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Imie)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plec)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rasa)
@@ -31,9 +43,6 @@
                 @Html.DisplayNameFor(model => model.Wiek)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Opis)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ZdjecieUrl)
             </th>
             <th></th>
@@ -46,7 +55,13 @@
                 @Html.DisplayFor(modelItem => item.Adoptowany)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plec)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rasa)
@@ -61,15 +76,12 @@
                 @Html.DisplayFor(modelItem => item.Wiek)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Opis)
-            </td>
-            <td>
                     <img src="@Html.DisplayFor(modelItem => item.ZdjecieUrl)" alt="zwierze" class="img-thumbnail" />
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edutuj</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
             </td>
         </tr>
 }

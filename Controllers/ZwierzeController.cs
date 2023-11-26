@@ -20,11 +20,27 @@ namespace PortalAdopcjiZwierzat.Controllers
         }
 
         // GET: Zwierze
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Zwierze != null ? 
-                          View(await _context.Zwierze.ToListAsync()) :
-                          Problem("Entity set 'PortalAdopcjiZwierzatContext.Zwierze'  is null.");
+
+              if (_context.Zwierze == null)
+            {
+                return Problem("Entity set 'PortalAdopcjiZwierzatContext.Zwierze'  is null.");
+               
+            }
+            var zwierzeta = from z in _context.Zwierze
+                            select z;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                zwierzeta = zwierzeta.Where(s => s.Nazwa!.Contains(searchString) || s.Imie!.Contains(searchString)
+                || s.Umaszczenie!.Contains(searchString) || s.Opis!.Contains(searchString));
+            }
+
+
+            return View(await zwierzeta.ToListAsync());
+                             
+              
         }
 
         // GET: Zwierze/Details/5
@@ -56,7 +72,7 @@ namespace PortalAdopcjiZwierzat.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Adoptowany,Nazwa,Rasa,Umaszczenie,Siersc,Wiek,Opis,ZdjecieUrl")] Zwierze zwierze)
+        public async Task<IActionResult> Create([Bind("Id,Adoptowany,Imie,Nazwa,Plec,Rasa,Umaszczenie,Siersc,Wiek,Opis,ZdjecieUrl")] Zwierze zwierze)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +104,7 @@ namespace PortalAdopcjiZwierzat.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Adoptowany,Nazwa,Rasa,Umaszczenie,Siersc,Wiek,Opis,ZdjecieUrl")] Zwierze zwierze)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Adoptowany,Imie,Nazwa,Plec,Rasa,Umaszczenie,Siersc,Wiek,Opis,ZdjecieUrl")] Zwierze zwierze)
         {
             if (id != zwierze.Id)
             {

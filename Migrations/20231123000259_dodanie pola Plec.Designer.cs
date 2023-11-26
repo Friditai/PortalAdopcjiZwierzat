@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortalAdopcjiZwierzat.Data;
 
@@ -10,9 +11,10 @@ using PortalAdopcjiZwierzat.Data;
 namespace PortalAdopcjiZwierzat.Migrations
 {
     [DbContext(typeof(PortalAdopcjiZwierzatContext))]
-    partial class PortalAdopcjiZwierzatContextModelSnapshot : ModelSnapshot
+    [Migration("20231123000259_dodanie pola Plec")]
+    partial class dodaniepolaPlec
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
