@@ -1,10 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PortalAdopcjiZwierzat.Data;
 using PortalAdopcjiZwierzat.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<PortalAdopcjiZwierzatContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PortalAdopcjiZwierzatContext") ?? throw new InvalidOperationException("Connection string 'PortalAdopcjiZwierzatContext' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<PortalAdopcjiZwierzatContext>();
+
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//    .AddEntityFrameworkStores<PortalAdopcjiZwierzatContext>()
+//    .AddDefaultTokenProviders();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,6 +42,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
