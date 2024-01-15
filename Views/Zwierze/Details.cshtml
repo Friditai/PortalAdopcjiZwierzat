@@ -73,6 +73,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a>
+    }
+    |
     <a asp-action="Index">Wróć do listy</a>
 </div>

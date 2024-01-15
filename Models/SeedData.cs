@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PortalAdopcjiZwierzat.Data;
 using PortalAdopcjiZwierzat.Models.Zwierzeta;
@@ -21,6 +22,7 @@ public static class SeedData
             {
                 return;   // DB has been seeded
             }
+
 
             List<Zwierze> seedData = new List<Zwierze>();
 
