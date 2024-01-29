@@ -22,17 +22,13 @@ body {
     width: 100px;
 }
 
-/* Strza³ka w górê 
-th.sorted-asc::after {
-    content: '\25B2';
-    float: right;
+.pet-image {
+    height: 80%;
+    width: 80%;
+    border: 1px solid black;
+    background-color: lightgrey;
 }
 
- Strza³ka w dó³ 
-th.sorted-desc::after {
-    content: '\25BC';
-    float: right;
-}*/
 
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting:before,
@@ -46,4 +42,47 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em !important;
     content: "" !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mb50 {
+    margin-bottom: 50px;
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.pet-items {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.pet-item {
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.pet-width {
+    width: 15%;
 }

@@ -1,9 +1,55 @@
-﻿@{
+﻿@model IEnumerable<PortalAdopcjiZwierzat.Models.Zwierzeta.Zwierze>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <img class="logo" src="images/logo.png" alt="logo" />
     <h1 class="display-4">Portal adopcji zwierząt</h1>
-    
+
+</div>
+
+<div class="section section-padding">
+    <div class="container-fluid">
+        <div class="section-title text-center mb50">
+            <h3>Zwierzęta do adopcji</h3>
+        </div>
+        <div class="pet-items">
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+
+                    <div class="pet-item pet-width text-center">
+                        <a asp-controller="Zwierze" asp-action="Details" asp-route-id="@item.Id">
+
+                        <div class="pet-item-content">
+                             
+                            <div class="text-center">
+                                <img class="pet-image rounded" src="/images/paw.png" alt="pet" />
+                                    
+                            </div>
+                            <div class="pet-item-details">
+                                <h3 class="text-center"> @Html.DisplayFor(modelItem => item.Imie)</h3>
+                                <p class="text-center">@Html.DisplayFor(modelItem => item.Nazwa)</p>
+                                <p class="text-center"><strong>Wiek: </strong>@Html.DisplayFor(modelItem => item.Wiek)</p>
+                                <p class="text-center"><strong>Płeć: </strong>@Html.DisplayFor(modelItem => item.Plec)</p>
+                            </div>
+                            
+                        </div>
+                        </a> 
+                    </div>
+                    
+                }
+            }
+            else
+            {
+                <p>Brak danych do wyświetlenia.</p>
+            }
+        </div>
+
+    </div>
+
+
 </div>
